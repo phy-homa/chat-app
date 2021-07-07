@@ -1,20 +1,21 @@
-    <div class="side_header">
-      <div class="user_name">
-        <%= link_to current_user.name, edit_user_path(current_user.id) %>
-      </div>
-      <div class="create_chat">
-        <a href="#">チャットを作成する</a>
-      </div>
-    </div>
-    <div class="side_menu">
-      <div class="chat_room">
-        <div class="room_name">
-          <a href="#">techroom1</a>
+<div class="side_header">
+  <div class="user_name">
+    <%= link_to current_user.name, edit_user_path(current_user.id) %>
+  </div>
+  <div class="create_chat">
+    <%= link_to 'チャットを作成する', new_room_path %>
+  </div>
+</div>
+<div class="side_menu">
+  <div class="chat_room">
+    <div class="room_name">
+      <% current_user.rooms.each do |room| %>
+        <div class="room">
+          <div class="room-name">
+            <a href="#"><%= room.name %></a>
+          </div>
         </div>
-      </div>
-      <div class="chat_room">
-        <div class="room_name">
-          <a href="#">techroom2</a>
-        </div>
-      </div>
+      <% end %>
     </div>
+  </div>
+</div>
